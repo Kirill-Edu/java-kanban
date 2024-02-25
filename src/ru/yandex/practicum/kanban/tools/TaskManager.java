@@ -1,3 +1,6 @@
+package ru.yandex.practicum.kanban.tools;
+
+import ru.yandex.practicum.kanban.stuff.*;
 import java.util.HashMap;
 
 public class TaskManager {

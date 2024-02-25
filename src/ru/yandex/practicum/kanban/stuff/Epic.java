@@ -1,3 +1,5 @@
+package ru.yandex.practicum.kanban.stuff;
+
 import java.util.HashMap;
 
 public class Epic extends Task {
