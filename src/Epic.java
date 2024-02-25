@@ -16,10 +16,6 @@ public class Epic extends Task {
         return subtasks;
     }
 
-    /*public void setSubtasks(HashMap<Integer, Subtask> subtasks) {
-        this.subtasks = subtasks;
-    }*/
-
     public boolean hasSubtasks() {
         return !subtasks.isEmpty();
     }
