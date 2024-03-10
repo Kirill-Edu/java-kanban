@@ -1,4 +1,4 @@
-package ru.yandex.practicum.kanban.stuff;
+package ru.yandex.practicum.kanban.tool.stuff;
 
 public class Subtask extends Task {
     private Epic epic;

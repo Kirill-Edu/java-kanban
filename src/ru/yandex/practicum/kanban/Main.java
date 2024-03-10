@@ -20,13 +20,17 @@ package ru.yandex.practicum.kanban;
     2. Идентификатор устанавливается задаче через метод setId() и только один раз.
  */
 
-import ru.yandex.practicum.kanban.stuff.*;
-import ru.yandex.practicum.kanban.tools.*;
+import ru.yandex.practicum.kanban.tool.stuff.*;
+import ru.yandex.practicum.kanban.tool.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        TaskManager taskManager = new TaskManager();
+        TaskManager taskManager = Managers.getDefault();
+
+        /*
+            Спринт 4.
+         */
 
         /*
             Создайте две задачи, а также эпик с двумя подзадачами и эпик с одной подзадачей.
@@ -89,11 +93,11 @@ public class Main {
         taskManager.updateSubtask(subtaskOneOfEpicWithTwoSubtasks);
         taskManager.updateSubtask(subtaskTwoOfEpicWithTwoSubtasks);
         System.out.println("Статусы для подзадач изменены.");
-        System.out.println("Спиок подзадач:");
+        System.out.println("Список подзадач:");
         System.out.println(subtaskOfEpicWithOneSubtask);
         System.out.println(subtaskOneOfEpicWithTwoSubtasks);
         System.out.println(subtaskTwoOfEpicWithTwoSubtasks);
-        System.out.println("Спиок эпиков с пересчитанными статусами:");
+        System.out.println("Список эпиков с пересчитанными статусами:");
         System.out.println(epicWithOneSubtask);
         System.out.println(epicWithTwoSubtasks);
 
@@ -109,11 +113,11 @@ public class Main {
         taskManager.updateSubtask(subtaskOneOfEpicWithTwoSubtasks);
         taskManager.updateSubtask(subtaskTwoOfEpicWithTwoSubtasks);
         System.out.println("Статусы для подзадач изменены.");
-        System.out.println("Спиок подзадач:");
+        System.out.println("Список подзадач:");
         System.out.println(subtaskOfEpicWithOneSubtask);
         System.out.println(subtaskOneOfEpicWithTwoSubtasks);
         System.out.println(subtaskTwoOfEpicWithTwoSubtasks);
-        System.out.println("Спиок эпиков с пересчитанными статусами:");
+        System.out.println("Список эпиков с пересчитанными статусами:");
         System.out.println(epicWithOneSubtask);
         System.out.println(epicWithTwoSubtasks);
 
@@ -124,11 +128,27 @@ public class Main {
         taskManager.removeTask(taskTwo.getId());
         taskManager.removeEpic(epicWithTwoSubtasks.getId());
         System.out.println("Удаление выполнено.");
-        System.out.println("Спиок оставшихся задач:");
+        System.out.println("Список оставшихся задач:");
         System.out.println(taskManager.getTasks());
-        System.out.println("Спиок оставшихся подзадач:");
+        System.out.println("Список оставшихся подзадач:");
         System.out.println(taskManager.getSubtasks());
-        System.out.println("Спиок оставшихся эпиков:");
+        System.out.println("Список оставшихся эпиков:");
         System.out.println(taskManager.getEpics());
+
+
+        /*
+            Спринт 5
+         */
+        System.out.println("\nСписок просмотров:");
+        for (int i = 0; i < 9; i++) {
+            taskManager.getTask(0);
+        }
+        for (int i = 0; i < 2; i++) {
+            taskManager.getEpic(2);
+        }
+        for (int i = 0; i < 2; i++) {
+            taskManager.getSubtask(3);
+        }
+        System.out.println(taskManager.getHistoryManager().getHistory());
     }
 }

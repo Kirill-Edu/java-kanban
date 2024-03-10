@@ -1,40 +1,56 @@
-package ru.yandex.practicum.kanban.tools;
+package ru.yandex.practicum.kanban.tool;
 
-import ru.yandex.practicum.kanban.stuff.*;
+import ru.yandex.practicum.kanban.tool.stuff.Epic;
+import ru.yandex.practicum.kanban.tool.stuff.Subtask;
+import ru.yandex.practicum.kanban.tool.stuff.Task;
+
 import java.util.HashMap;
 
-public class TaskManager {
+public class InMemoryTaskManager implements TaskManager {
     private static int lastTaskId = -1;
     private HashMap<Integer, Task> tasks;
     private HashMap<Integer, Epic> epics;
     private HashMap<Integer, Subtask> subtasks;
+    private HistoryManager historyManager;
 
-    public TaskManager () {
+    public InMemoryTaskManager(HistoryManager historyManager) {
         tasks = new HashMap<>();
         epics = new HashMap<>();
         subtasks = new HashMap<>();
+        this.historyManager = historyManager;
     }
+
+    @Override
     public HashMap<Integer, Task> getTasks() {
         return tasks;
     }
 
+    @Override
     public HashMap<Integer, Epic> getEpics() {
         return epics;
     }
 
+    @Override
     public HashMap<Integer, Subtask> getSubtasks() {
         return subtasks;
     }
 
+    public HistoryManager getHistoryManager() {
+        return historyManager;
+    }
+
+    @Override
     public void clearTasks() {
         tasks.clear();
     }
 
+    @Override
     public void clearEpics() {
         subtasks.clear();
         epics.clear();
     }
 
+    @Override
     public void clearSubtasks() {
         subtasks.clear();
         for (Epic epic : epics.values()) {
@@ -42,18 +58,31 @@ public class TaskManager {
         }
     }
 
+    @Override
     public Task getTask(Integer id) {
+        if (tasks.containsKey(id)) {
+            historyManager.add(tasks.get(id));
+        }
         return tasks.get(id);
     }
 
+    @Override
     public Epic getEpic(Integer id) {
+        if (epics.containsKey(id)) {
+            historyManager.add(epics.get(id));
+        }
         return epics.get(id);
     }
 
+    @Override
     public Subtask getSubtask(Integer id) {
+        if (subtasks.containsKey(id)) {
+            historyManager.add(subtasks.get(id));
+        }
         return subtasks.get(id);
     }
 
+    @Override
     public Task createTask(Task task) {
         if (task == null) {
             return null;
@@ -64,6 +93,7 @@ public class TaskManager {
     }
 
     // Эпик создается пустой, без подзадач
+    @Override
     public Epic createEpic(Epic epic) {
         if (epic == null) {
             return null;
@@ -75,6 +105,7 @@ public class TaskManager {
     }
 
     // Подзадачи создаются с привязкой к эпику
+    @Override
     public Subtask createSubtask(Subtask subtask, Epic epic) {
         if (subtask == null || epic == null || !epic.isIdAssigned()) {
             return null;
@@ -86,6 +117,7 @@ public class TaskManager {
         return subtask;
     }
 
+    @Override
     public boolean updateTask(Task task) {
         if (task == null || !tasks.containsKey(task.getId())) {
             return false;
@@ -96,6 +128,7 @@ public class TaskManager {
     }
 
     // При обновлении эпика связи с подзадачами не изменяются, поэтому пересчитывать статус эпика тоже не надо.
+    @Override
     public boolean updateEpic(Epic epic) {
         if (epic == null || !epics.containsKey(epic.getId())) {
             return false;
@@ -111,6 +144,7 @@ public class TaskManager {
         При обновлении подзадачи связь с эпиком не изменяется, но может измениться статус подзадачи, поэтому
         статус эпика надо пересчитать.
     */
+    @Override
     public boolean updateSubtask(Subtask subtask) {
         if (subtask == null || !subtasks.containsKey(subtask.getId())) {
             return false;
@@ -125,6 +159,7 @@ public class TaskManager {
     }
 
     // Возвращает удаленную задачу
+    @Override
     public Task removeTask(Integer id) {
         if (id == null || !tasks.containsKey(id)) {
             return null;
@@ -133,6 +168,7 @@ public class TaskManager {
     }
 
     // Возвращает удаленный эпик
+    @Override
     public Task removeEpic(Integer id) {
         if (id == null || !epics.containsKey(id)) {
             return null;
@@ -144,6 +180,7 @@ public class TaskManager {
     }
 
     // Возвращает удаленную подзадачу
+    @Override
     public Task removeSubtask(Integer id) {
         if (id == null || !subtasks.containsKey(id)) {
             return null;
@@ -153,6 +190,8 @@ public class TaskManager {
         removedSubtask.getEpic().calculateStatus();
         return removedSubtask;
     }
+
+    @Override
     public HashMap<Integer, Subtask> getSubtasks(Epic epic) {
         if (epic == null) {
             return null;
