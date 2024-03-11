@@ -1,4 +1,4 @@
-package ru.yandex.practicum.kanban.tool;
+package ru.yandex.practicum.kanban.tools;
 
 public class Managers {
     public static TaskManager getDefault() {

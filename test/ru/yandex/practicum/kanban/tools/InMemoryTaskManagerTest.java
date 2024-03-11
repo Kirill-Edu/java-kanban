@@ -1,10 +1,10 @@
-package ru.yandex.practicum.kanban.tool;
+package ru.yandex.practicum.kanban.tools;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.yandex.practicum.kanban.tool.stuff.Epic;
-import ru.yandex.practicum.kanban.tool.stuff.Subtask;
-import ru.yandex.practicum.kanban.tool.stuff.Task;
+import ru.yandex.practicum.kanban.tools.tasks.Epic;
+import ru.yandex.practicum.kanban.tools.tasks.Subtask;
+import ru.yandex.practicum.kanban.tools.tasks.Task;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -20,8 +20,11 @@ package ru.yandex.practicum.kanban;
     2. Идентификатор устанавливается задаче через метод setId() и только один раз.
  */
 
-import ru.yandex.practicum.kanban.tool.stuff.*;
-import ru.yandex.practicum.kanban.tool.*;
+import ru.yandex.practicum.kanban.tools.*;
+import ru.yandex.practicum.kanban.tools.tasks.Epic;
+import ru.yandex.practicum.kanban.tools.tasks.Subtask;
+import ru.yandex.practicum.kanban.tools.tasks.Task;
+import ru.yandex.practicum.kanban.tools.tasks.TaskStatus;
 
 public class Main {
 

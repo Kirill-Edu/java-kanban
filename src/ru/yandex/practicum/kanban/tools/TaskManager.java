@@ -1,8 +1,8 @@
-package ru.yandex.practicum.kanban.tool;
+package ru.yandex.practicum.kanban.tools;
 
-import ru.yandex.practicum.kanban.tool.stuff.Epic;
-import ru.yandex.practicum.kanban.tool.stuff.Subtask;
-import ru.yandex.practicum.kanban.tool.stuff.Task;
+import ru.yandex.practicum.kanban.tools.tasks.Epic;
+import ru.yandex.practicum.kanban.tools.tasks.Subtask;
+import ru.yandex.practicum.kanban.tools.tasks.Task;
 
 import java.util.HashMap;
 

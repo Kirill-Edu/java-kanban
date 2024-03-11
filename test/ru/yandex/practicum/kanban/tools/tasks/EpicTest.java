@@ -1,4 +1,4 @@
-package ru.yandex.practicum.kanban.tool.stuff;
+package ru.yandex.practicum.kanban.tools.tasks;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

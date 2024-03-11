@@ -1,4 +1,4 @@
-package ru.yandex.practicum.kanban.tool.stuff;
+package ru.yandex.practicum.kanban.tools.tasks;
 
 import java.util.Objects;
 

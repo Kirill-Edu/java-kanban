@@ -1,4 +1,4 @@
-package ru.yandex.practicum.kanban.tool;
+package ru.yandex.practicum.kanban.tools;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
-package ru.yandex.practicum.kanban.tool;
+package ru.yandex.practicum.kanban.tools;
 
-import ru.yandex.practicum.kanban.tool.stuff.Task;
+import ru.yandex.practicum.kanban.tools.tasks.Task;
 
 import java.util.List;
 
